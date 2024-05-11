@@ -1,0 +1,8 @@
+
+# Visual studio
+**/bin
+**/obj
+.vs/
+
+# EntityFrameworkCore
+**/migrations
