@@ -146,8 +146,6 @@ namespace REST
 			// Подключение middlewares
 			//________________________________
 
-			app.UseHttpsRedirection();
-
 			app.UseCors("AbsolutleFree");
 
 			app.UseGlobalHandleExceptionsMiddleware();

@@ -26,7 +26,9 @@ namespace REST.AccessRules
 		{
 			Endpoint endpoint = httpContext.GetEndpoint();
 
-			if (endpoint is not null && CheckNecessaryKey(endpoint))
+			// Если вызван запрещенный метод, endpoint будет not null.
+			// Затем проверяем что у ендпоинта есть методата, если её нет => конечной точки вызова нету.
+			if (endpoint is not null && endpoint.Metadata.Count != 0 && CheckNecessaryKey(endpoint))
 			{
 				string queryKey = httpContext.Request.Query[options.Value.QueryKeyName];
 
