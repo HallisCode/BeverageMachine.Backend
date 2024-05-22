@@ -8,9 +8,9 @@ namespace REST.Validations.Models
 
 		public DrinkOrderRequestValidator()
 		{
-			RuleFor(model => model.DrinkId).NaturalNumber();
+			RuleFor(model => model.DrinkId).NotEmpty().NaturalNumber();
 
-			RuleForEach(model => model.Coins).SetValidator(new RubleCoinDtoValidator());
+			RuleFor(model => model.Coins).NotEmpty().ForEach(coin => coin.SetValidator(new RubleCoinDtoValidator()));
 		}
 	}
 }

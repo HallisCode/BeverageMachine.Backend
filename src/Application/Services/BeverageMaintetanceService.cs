@@ -126,7 +126,7 @@ namespace Application.Services
 
 			Drink drinkother = await _unitWork.DrinkRepository.SelectFirstLikeTitleAsync(request.Title);
 
-			if (drinkother is not null) throw new AlreadyExistException($"Напиток с названием \"{drink.Title}\" уже существует.");
+			if (drinkother is not null && drinkother.ID != drink.ID) throw new AlreadyExistException($"Напиток с названием \"{drink.Title}\" уже существует.");
 
 
 			// Объединяем обновление картинки и напитка в одну транзакцию.
